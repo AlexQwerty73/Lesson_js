@@ -41,3 +41,60 @@
 // console.log(print(3, Com_car, Com_owner));
 // console.log(print(0, Com_car, Com_owner));
 // -------------------------
+
+// const random_number = (min, max) => Math.round(Math.random() * (max - min) + min);
+// console.log(random_number(5,6));
+
+// ----------------------
+
+// const people = [
+//     { name: 'Alex', age: 23 },
+//     { name: 'Dmytro', age: 34 },
+//     { name: 'Rayan', age: 27 },
+//     { name: 'Oleg', age: 13 },
+// ];
+// for (let user of people) {
+//     console.log(user.name, user.age);
+// }
+
+// -----------------------
+
+// const myName = prompt("Your name:");
+// const getName = (name) => {
+//     return name;
+// }
+// const btn = document.getElementById('btn');
+// const result = document.getElementById('result');
+
+// btn.addEventListener("click", () => {
+//     result.innerText = getName(myName);
+// });
+
+// -----------------------
+
+
+// const arr = [1, 4, 15, 6, 2, 7];
+
+// const sum_arr = (array) => {
+//     let sum = 0;
+//     for (let num of array) {
+//         sum += num;
+//     }
+//     return sum;
+// }
+// document.write(sum_arr(arr));
+
+// ---------------------
+
+// const arr = ["qqwqe", "wrwr", "qwert"];
+// const arr2 = arr.join(" - ");
+
+// console.log(arr2);
+
+// --------------
+
+const names = ['alex', 'beniii', 'vladi', 'den'];
+const nameFilter = names.filter(names => names.length > 5);
+console.log(nameFilter);
+
+// ------------------
