@@ -84,17 +84,54 @@
 // }
 // document.write(sum_arr(arr));
 
-// ---------------------
+// ---------------------join
 
 // const arr = ["qqwqe", "wrwr", "qwert"];
 // const arr2 = arr.join(" - ");
 
 // console.log(arr2);
 
-// --------------
+// --------------filter
 
-const names = ['alex', 'beniii', 'vladi', 'den'];
-const nameFilter = names.filter(names => names.length > 5);
-console.log(nameFilter);
+// const names = ['alex', 'beniii', 'vladi', 'den'];
+// const nameFilter = names.filter(names => names.length > 5);
+// console.log(nameFilter);
 
-// ------------------
+// ------------------reduce
+
+// const arr = [1,2,3];
+// const val= arr.reduce((prVal, curVal) => prVal + curVal);
+// console.log(val); 
+// 1+2+3 = 6
+
+// ------------------map
+
+// const arr = [1,2,3,4,5];
+// const newArr = arr.map(num => num *2);
+// console.log(newArr);
+// 2,4,6,8,10
+
+// ---------------
+
+
+// const arr = [6, 2, 8, 5, 1, 3];
+// const advNum = arr.reduce((prVal, curVal) => prVal + curVal) / arr.length;
+// const newArr = arr.filter(num => num > advNum);
+// console.log(newArr);
+
+// ----------------split  sort/reverse  join
+
+// const str = 'qwq1';
+
+// const reverceStr = str.split('').reverse().join('');
+// console.log(str, reverceStr, str == reverceStr ? true : false);
+
+// const reverceStr2 = str.split('').sort(a => -1).join('');
+// console.log(str, reverceStr2, str == reverceStr2 ? true : false);
+
+// -------------------рекурсія
+
+// const bigNum = (repNum, n) => repNum < 1 ? n : bigNum(repNum - 1, n * 2);
+// console.log(bigNum(3, 2));
+
+// ------------------------
