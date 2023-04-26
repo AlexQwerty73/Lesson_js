@@ -134,4 +134,49 @@
 // const bigNum = (repNum, n) => repNum < 1 ? n : bigNum(repNum - 1, n * 2);
 // console.log(bigNum(3, 2));
 
-// ------------------------
+// ------------------------object
+
+// const building = {
+//     floor: 5,
+//     color: 'white',
+//     price: 1000,
+//     apartament: 10,
+//     resident: 10,
+// } 
+// const deleteItem = (obj, item) => delete obj[item];
+// const addItem = (obj, item, value) =>   obj[item] = value;
+
+// deleteItem(building, 'color');
+// addItem(building, 'Item', 'item')
+
+// console.log(building);
+
+// ------------------------------------
+// const MAX_PRICE = 100000;
+// const MIN_PRICE = 0;
+
+// const cars = [
+//     { name: 'mazda', price: 4500, year: 2001, color: 'white' },
+//     { name: 'audi', price: 2500, year: 2007, color: 'red' },
+//     { name: 'volvo', price: 5000, year: 2010, color: 'black' },
+//     { name: 'bmw', price: 1500, year: 2020, color: 'green' },
+//     { name: 'toyota', price: 3000, year: 2021, color: 'yellow' },
+// ];
+
+// function priceRange(cars, min = MIN_PRICE, max = MAX_PRICE) {
+//     return cars.filter(obj => min <= obj.price && obj.price <= max);
+// }
+// console.log(priceRange(cars, 2000, 3000));
+
+// const users = [
+//     { name: 'Alex', year: 2007, hobby: 'football', apartament: true, car: true },
+//     { name: 'Vova', year: 2009, hobby: 'football', apartament: true, car: true },
+//     { name: 'Nikita', year: 2005, hobby: 'football', apartament: true, car: true },
+//     { name: 'Tomas', year: 2010, hobby: 'football', apartament: true, car: true },
+//     { name: 'Stepan', year: 2004, hobby: 'football', apartament: true, car: true },
+//     { name: 'Katerina', year: 2002, hobby: 'football', apartament: true, car: true },
+// ];
+
+// const ageOver18 = (user) => user.filter(obj => new Date().getFullYear() - obj.year >= 18);
+
+// console.log(ageOver18(users));
