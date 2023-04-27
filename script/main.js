@@ -180,3 +180,21 @@
 // const ageOver18 = (user) => user.filter(obj => new Date().getFullYear() - obj.year >= 18);
 
 // console.log(ageOver18(users));
+
+const interval = prompt("За скільки секунд повтор?");
+
+const arrTel = [];
+const rand = (min, max) => Math.round(Math.random() * (max - min) + min);
+
+const addTel = (arr) => {
+    arr.push({
+        name: `Iphone ${rand(1, 15)}`,
+        id: rand(0, 10000),
+        price: `${rand(500, 10000)}$`,
+        date: new Date()
+    });
+    console.log(arr);
+};
+
+setInterval(() => addTel(arrTel), Number(interval) == interval ? interval * 1000 : 1000);
+
