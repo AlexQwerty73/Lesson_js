@@ -181,20 +181,205 @@
 
 // console.log(ageOver18(users));
 
-const interval = prompt("За скільки секунд повтор?");
+// const interval = prompt("За скільки секунд повтор?");
 
-const arrTel = [];
-const rand = (min, max) => Math.round(Math.random() * (max - min) + min);
+// const arrTel = [];
+// const rand = (min, max) => Math.round(Math.random() * (max - min) + min);
 
-const addTel = (arr) => {
-    arr.push({
-        name: `Iphone ${rand(1, 15)}`,
-        id: rand(0, 10000),
-        price: `${rand(500, 10000)}$`,
-        date: new Date()
-    });
-    console.log(arr);
-};
+// const addTel = (arr) => {
+//     arr.push({
+//         name: `Iphone ${rand(1, 15)}`,
+//         id: rand(0, 10000),
+//         price: `${rand(500, 10000)}$`,
+//         date: new Date()
+//     });
+//     console.log(arr);
+// };
 
-setInterval(() => addTel(arrTel), Number(interval) == interval ? interval * 1000 : 1000);
+// setInterval(() => addTel(arrTel), Number(interval) == interval ? interval * 1000 : 1000);
 
+// CLASS-----------------------------------
+
+// class Car {
+//     brand;
+//     type;
+//     maxSpeed;
+
+//     constructor(brand, type, maxSpeed) {
+//         this.brand = brand;
+//         this.type = type;
+//         this.maxSpeed = maxSpeed;
+//     }
+
+//     getBrand() {
+//         return this.brand;
+//     }
+//     setBrand(newValue) {
+//         this.brand = newValue;
+//     }
+
+//     getFullInfo() {
+//         return `Бренд автомобілю: ${this.brand}, тип: ${this.type}, з макс швидкістю: ${this.maxSpeed}`
+//     }
+// }
+
+// const car = new Car('BMW', 'S', 300);
+
+// console.log(car.getFullInfo());
+// console.log(car);
+
+
+// ----------------
+
+// class Person {
+//     name;
+//     age;
+
+//     constructor(name, age) {
+//         this.name = name;
+//         this.age = age;
+//     }
+
+//     getFullInfo(){
+//         return `name ${this.name}, age ${this.age}`
+//     }
+// }
+
+// class Worker extends Person{
+//     isWork;
+
+//     constructor(name,age,isWork){
+//         super(name,age);
+//         this.isWork = isWork;
+//     }
+// }
+
+// class Developer extends Worker{
+//     lvl;
+
+//     constructor(name,age,isWork,lvl){
+//         super(name,age,isWork);
+//         this.lvl=lvl;
+//     }
+// }
+
+// const alex = new Person('Alex', 30);
+// const mary = new Person('Mary', 20);
+// console.log(alex);
+// console.log(mary);
+
+// const worker = new Worker('Leonid', 40, true);
+// console.log(worker);
+
+// const developer = new Developer('Ivan', 25,true,'junior');
+// console.log(developer);
+
+// ------------------
+
+// class Wheel {
+
+// }
+
+// class Car{
+//     engine;
+//     wheels = [];
+
+//     constructor(){
+
+//     }
+// }
+
+class Person {
+    name;
+    age;
+    index;
+
+    constructor(name, age, index) {
+        this.name = name;
+        this.age = age;
+        this.index = index;
+    }
+
+    getName() {
+        return this.name;
+    }
+    setName(value) {
+        this.name = value;
+    }
+    getAge() {
+        return this.age;
+    }
+    setAge(value) {
+        this.age = value;
+    }
+    getIndex() {
+        return this.index;
+    }
+    setIndex(value) {
+        this.index = value;
+    }
+
+    getFullInfo() {
+        return `name: ${this.name}, age: ${this.age}, index:${this.index}`;
+    }
+}
+class Horse {
+    name;
+    age;
+    constructor(n, a) {
+        this.name = n;
+        this.age = a;
+    }
+}
+class Sword {
+    damage;
+    age;
+    constructor(d, a) {
+        this.damage = d;
+        this.age = a;
+    }
+}
+
+class Knight extends Person {
+    inAttack;
+    hp;
+
+    constructor(name, age, index, inAttack, hp, sword, horse) {
+        super(name, age, index);
+        this.inAttack = inAttack;
+        this.hp = hp;
+        this.sword = sword;
+        this.horse = horse;
+    }
+
+    getInAttack() { return this.inAttack; }
+    setInAttack(value) { this.inAttack = value; }
+    getHp() { return this.hp; }
+    setHp(value) { this.hp = value }
+
+    attack(k) {
+        if (k.hp - this.sword.damage <= 0) {
+            k.hp = 0;
+        } else if (k.hp > 0) {
+            k.hp -= this.sword.damage;
+        }
+    }
+
+    getFullInfo() {
+        return `name: ${this.name}, age: ${this.age},
+         index:${this.index}, in attack: ${this.inAttack}`;
+    }
+}
+
+const sword1 = new Sword(3, 1);
+const horse1 = new Horse('Name', 10);
+const sword2 = new Sword(999, 13);
+const horse2 = new Horse('Name', 10);
+
+const k1 = new Knight('alex', 20, 1, true, 100, sword1, horse1);
+const k2 = new Knight('spepan', 30, 1, true, 100, sword2, horse2);
+
+k1.attack(k2);
+k2.attack(k1);
+
+console.log(k1.hp, k2.hp);
