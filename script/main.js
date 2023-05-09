@@ -289,97 +289,102 @@
 //     }
 // }
 
-class Person {
-    name;
-    age;
-    index;
+// class Person {
+//     name;
+//     age;
+//     index;
 
-    constructor(name, age, index) {
-        this.name = name;
-        this.age = age;
-        this.index = index;
-    }
+//     constructor(name, age, index) {
+//         this.name = name;
+//         this.age = age;
+//         this.index = index;
+//     }
 
-    getName() {
-        return this.name;
-    }
-    setName(value) {
-        this.name = value;
-    }
-    getAge() {
-        return this.age;
-    }
-    setAge(value) {
-        this.age = value;
-    }
-    getIndex() {
-        return this.index;
-    }
-    setIndex(value) {
-        this.index = value;
-    }
+//     getName() {
+//         return this.name;
+//     }
+//     setName(value) {
+//         this.name = value;
+//     }
+//     getAge() {
+//         return this.age;
+//     }
+//     setAge(value) {
+//         this.age = value;
+//     }
+//     getIndex() {
+//         return this.index;
+//     }
+//     setIndex(value) {
+//         this.index = value;
+//     }
 
-    getFullInfo() {
-        return `name: ${this.name}, age: ${this.age}, index:${this.index}`;
-    }
-}
-class Horse {
-    name;
-    age;
-    constructor(n, a) {
-        this.name = n;
-        this.age = a;
-    }
-}
-class Sword {
-    damage;
-    age;
-    constructor(d, a) {
-        this.damage = d;
-        this.age = a;
-    }
-}
+//     getFullInfo() {
+//         return `name: ${this.name}, age: ${this.age}, index:${this.index}`;
+//     }
+// }
+// class Horse {
+//     name;
+//     age;
+//     constructor(n, a) {
+//         this.name = n;
+//         this.age = a;
+//     }
+// }
+// class Sword {
+//     damage;
+//     age;
+//     constructor(d, a) {
+//         this.damage = d;
+//         this.age = a;
+//     }
+// }
 
-class Knight extends Person {
-    inAttack;
-    hp;
+// class Knight extends Person {
+//     inAttack;
+//     hp;
 
-    constructor(name, age, index, inAttack, hp, sword, horse) {
-        super(name, age, index);
-        this.inAttack = inAttack;
-        this.hp = hp;
-        this.sword = sword;
-        this.horse = horse;
-    }
+//     constructor(name, age, index, inAttack, hp, sword, horse) {
+//         super(name, age, index);
+//         this.inAttack = inAttack;
+//         this.hp = hp;
+//         this.sword = sword;
+//         this.horse = horse;
+//     }
 
-    getInAttack() { return this.inAttack; }
-    setInAttack(value) { this.inAttack = value; }
-    getHp() { return this.hp; }
-    setHp(value) { this.hp = value }
+//     getInAttack() { return this.inAttack; }
+//     setInAttack(value) { this.inAttack = value; }
+//     getHp() { return this.hp; }
+//     setHp(value) { this.hp = value }
 
-    attack(k) {
-        if (k.hp - this.sword.damage <= 0) {
-            k.hp = 0;
-        } else if (k.hp > 0) {
-            k.hp -= this.sword.damage;
-        }
-    }
+//     attack(k) {
+//         if (k.hp - this.sword.damage <= 0) {
+//             k.hp = 0;
+//         } else if (k.hp > 0) {
+//             k.hp -= this.sword.damage;
+//         }
+//     }
 
-    getFullInfo() {
-        return `name: ${this.name}, age: ${this.age},
-         index:${this.index}, in attack: ${this.inAttack}`;
-    }
-}
+//     getFullInfo() {
+//         return `name: ${this.name}, age: ${this.age},
+//          index:${this.index}, in attack: ${this.inAttack}`;
+//     }
+// }
 
-const sword1 = new Sword(3, 1);
-const horse1 = new Horse('Name', 10);
-const sword2 = new Sword(999, 13);
-const horse2 = new Horse('Name', 10);
+// const sword1 = new Sword(3, 1);
+// const horse1 = new Horse('Name', 10);
+// const sword2 = new Sword(999, 13);
+// const horse2 = new Horse('Name', 10);
 
-const k1 = new Knight('alex', 20, 1, true, 100, sword1, horse1);
-const k2 = new Knight('spepan', 30, 1, true, 100, sword2, horse2);
+// const k1 = new Knight('alex', 20, 1, true, 100, sword1, horse1);
+// const k2 = new Knight('spepan', 30, 1, true, 100, sword2, horse2);
 
-k1.attack(k2);
-k2.attack(k1);
+// k1.attack(k2);
+// k2.attack(k1);
 
-console.log(k1.hp, k2.hp);
+// console.log(k1.hp, k2.hp);
+
+
+
+// polymorfysm
+
