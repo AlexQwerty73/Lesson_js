@@ -11,7 +11,8 @@ window.addEventListener('load', () => {
             new Circle(10),
             new Circle(20),
             new Rectangle(10, 30),
-            new Rectangle(20, 20)
+            new Rectangle(20, 20),
+            new Triangle(10,5,10)
         ];
 
         let k = 0;
