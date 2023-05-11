@@ -12,7 +12,7 @@ window.addEventListener('load', () => {
             new Circle(20),
             new Rectangle(10, 30),
             new Rectangle(20, 20),
-            new Triangle(10,5,10)
+            new Triangle(10, 5, 10)
         ];
 
         let k = 0;
@@ -24,6 +24,6 @@ window.addEventListener('load', () => {
             displayBox.innerHTML += `<br>${++k}. ${e} >>> площа: ${x.toFixed(2)} ^\cm^2`;
         }
 
-        displayBox.innerHTML+=`<br><br>Загальна площа: ${result.toFixed(2)}cm^2`
+        displayBox.innerHTML += `<br><br>Загальна площа: ${result.toFixed(2)}cm^2`
     });
 });
