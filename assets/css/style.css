@@ -1,46 +1,52 @@
-body{
+body {
     text-align: center;
     padding: 20px 5%;
 }
 
-header > h1 {
+header>h1 {
     color: rgb(117, 9, 117);
 }
-footer > h6 {
+
+footer>h6 {
     color: rgb(3, 144, 144);
 }
-.nav-img{
+
+.nav-img {
     width: 75%;
     margin: 3px;
     padding: 3px;
     border: 1px solid silver;
     transition: transfotm 0.5s;
 }
-.nav-img:hover{
+
+.nav-img:hover {
     cursor: pointer;
     box-shadow: 0px 0px 10px silver;
 }
 
-.row div{
+.row div {
     padding: 5px;
 }
-section{
+
+section {
     border: 1px solid silver;
-border-radius: 15px;
-padding: 15px;
-height: 100%;
+    border-radius: 15px;
+    padding: 15px;
+    height: 100%;
 }
-#logo-img{
+
+#logo-img {
     width: 75%;
     margin-top: 20%;
 }
 
-.mini{
+.mini {
     width: 100%;
     margin: 2px;
     border: 1px solid silver;
 }
-.mini:hover{
+
+.mini:hover {
     cursor: pointer;
     box-shadow: 0px 0px 10px gray;
 }
