@@ -1,5 +1,13 @@
 $(document).ready(() => {
 
-    const slider = new Slider('slider', '1000px', '500px', []);
+    const manager = new Manager()
+    manager.fillCollection('collection1', 'p', 10);
 
+    let targetCollection = manager.collection;
+    const slider = new Slider('slider', '1000px', '500px', targetCollection, 200);
+
+    slider.loadCollection(0, targetCollection)
+    slider.activateArrowHover();
+    slider.activateLeftArrow();
+    slider.activateRightArrow();
 });
