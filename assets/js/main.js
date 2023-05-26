@@ -10,4 +10,6 @@ $(document).ready(() => {
     slider.activateArrowHover();
     slider.activateLeftArrow();
     slider.activateRightArrow();
+    slider.activatePlayButton();
+    slider.activateStopButton();
 });
