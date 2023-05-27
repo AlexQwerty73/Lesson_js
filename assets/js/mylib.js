@@ -109,6 +109,8 @@ class Slider {
 
                 $(e.target).css({ opacity: 0.2 });
                 $('#play-button').css({ opacity: 1 });
+                $('#right-arrow').css({ opacity: index < this._images.length ? 1 : 0.2 });
+                $('#left-arrow').css({ opacity: this._images.length <= 2 ? 0.2 : 1 });
             }
         });
     }
@@ -123,7 +125,7 @@ class Slider {
                 $('#play-button').css({ opacity: 1 });
                 $('#stop-button').css({ opacity: 0.2 });
                 $('#right-arrow').css({ opacity: index < this._images.length ? 1 : 0.2 });
-                $('#left-arrow').css({ opacity: 1 });
+                $('#left-arrow').css({ opacity: this._images.length <= 2 ? 0.2 : 1 });
 
                 return;
             } else {
