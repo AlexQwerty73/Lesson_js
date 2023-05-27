@@ -11,7 +11,7 @@ class Slider {
         this._box.show(this._duration);
 
         this._slideId = 0;
-        this._presentationIsActive = true;
+        this._presentationIsActive = false;
     }
 
     _loadImage(index, path) {
@@ -26,7 +26,7 @@ class Slider {
 
     loadCollection(index, collection) {
         setTimeout(() => {
-            if (index > collection.length || !this._presentationIsActive) {
+            if (index > collection.length) {
                 $('#left-arrow').fadeIn(this._duration);
                 $('#right-arrow').fadeIn(this._duration);
                 $('#play-button').fadeIn(this._duration);
@@ -38,9 +38,7 @@ class Slider {
                 $('#left-arrow').css({ opacity: 1 });
                 return;
             } else {
-
                 this._slideId = index;
-                this._presentationIsActive = index != collection.length;
                 this._loadImage(index, collection[index++]);
                 $('progress').val(index);
                 this.loadCollection(index, collection);
@@ -68,8 +66,7 @@ class Slider {
     }
     activateLeftArrow() {
         $('#left-arrow').on('click', () => {
-            if (this._slideId > 1) {
-console.log(this._slideId);
+            if (this._slideId > 1 && !this._presentationIsActive) {
                 $(`#${this._slideId--}`).fadeOut(this._duration);
                 $(`progress`).val(this._slideId);
 
@@ -81,7 +78,7 @@ console.log(this._slideId);
     }
     activateRightArrow() {
         $('#right-arrow').on('click', () => {
-            if (this._slideId < this._images.length) {
+            if (this._slideId < this._images.length && !this._presentationIsActive) {
 
                 $(`#${++this._slideId}`).fadeIn(this._duration);
                 $(`progress`).val(this._slideId);
@@ -93,20 +90,51 @@ console.log(this._slideId);
     }
     activatePlayButton() {
         $('#play-button').on('click', (e) => {
-            this._presentationIsActive = true;
+            if (!this._presentationIsActive) {
+                this._presentationIsActive = true;
 
-            $(e.target).css({ opacity: 0.2 });
-            $('#stop-button').css({ opacity: 1 });
+                $(e.target).css({ opacity: 0.2 });
+                $('#stop-button').css({ opacity: 1 });
+                $('#right-arrow').css({ opacity: 0.2 });
+                $('#left-arrow').css({ opacity: 0.2 });
 
-            this.loadCollection(0, this._images);
+                this._presentation(0, this._images);
+            }
         });
     }
     activateStopButton() {
         $('#stop-button').on('click', (e) => {
-            this._presentationIsActive = false;
+            if (this._presentationIsActive) {
+                this._presentationIsActive = false;
 
-            $(e.target).css({ opacity: 0.2 });
-            $('#play-button').css({ opacity: 1 });
+                $(e.target).css({ opacity: 0.2 });
+                $('#play-button').css({ opacity: 1 });
+            }
         });
+    }
+    _presentation(index, presentation) {
+        if (index === 1) {
+            for (let i = this._images.length; i > 1; i--) {
+                $(`#${i}`).fadeOut(this._duration / 2);
+            }
+        }
+        setTimeout(() => {
+            if (index > this._images.length || !this._presentationIsActive) {
+                $('#play-button').css({ opacity: 1 });
+                $('#stop-button').css({ opacity: 0.2 });
+                $('#right-arrow').css({ opacity: index < this._images.length ? 1 : 0.2 });
+                $('#left-arrow').css({ opacity: 1 });
+
+                return;
+            } else {
+                this._slideId = index;
+                $(`#${++this._slideId}`).fadeIn(this._duration);
+                $('progress').val(++index);
+                this._presentation(index, presentation);
+
+                this._presentationIsActive = index < this._images.length;
+            }
+
+        }, this._duration);
     }
 }

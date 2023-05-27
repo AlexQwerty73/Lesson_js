@@ -4,7 +4,7 @@ $(document).ready(() => {
     manager.fillCollection('collection1', 'p', 10);
 
     let targetCollection = manager.collection;
-    const slider = new Slider('slider', '1000px', '500px', targetCollection, 200);
+    const slider = new Slider('slider', '1000px', '500px', targetCollection, 1000);
 
     slider.loadCollection(0, targetCollection)
     slider.activateArrowHover();
