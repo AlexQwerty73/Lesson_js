@@ -1,5 +1,5 @@
-import { Controller } from "./controller";  
+import { Controller } from "./controller";
 
-$(document).ready(()=>{
-const controller = new Controller();
+$(document).ready(() => {
+    const controller = new Controller();
 });
