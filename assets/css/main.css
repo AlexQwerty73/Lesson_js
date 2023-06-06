@@ -1,0 +1,64 @@
+body {
+    text-align: center;
+    padding: 25px 10%;
+    font: 12pt 'Comic Sans MS';
+}
+
+div {
+    padding: 5px;
+}
+
+#left-panel,
+#right-panel,
+#view-box {
+    border: 1px solid silver;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+h2 {
+    color: purple;
+}
+
+h4 {
+    color: teal;
+}
+
+#view-box {
+    height: 450px;
+}
+
+#red-label {
+    color: red;
+}
+
+#green-label {
+    color: green;
+}
+
+#blue-label {
+    color: blue;
+}
+
+.slider {
+    margin: 5px auto;
+    height: 350px;
+    width: 40px;
+    background: lavender;
+}
+
+#red-slider .ui-widget-header {
+    background: red;
+}
+
+.slider span{
+    width: 50px !important;
+}
+
+#green-slider .ui-widget-header {
+    background: green;
+}
+
+#blue-slider .ui-widget-header {
+    background: blue;
+}
