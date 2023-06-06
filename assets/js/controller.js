@@ -3,8 +3,8 @@ import { Drawer } from "./drawer.js";
 export class Controller {
     names = [];
     results = [];
-    source = 'server/data.json';
-    drawer=new Drawer();
+    source = './server/data.json';
+    drawer = new Drawer();
 
     constructor() { }
 
@@ -33,6 +33,7 @@ export class Controller {
         $('tbody').html('');
         this.names.length = 0;
         this.results.length = 0;
+        this.drawer.initCanvas();
     }
     activateLoadButton() {
         $('#load-btn').click(() => {
@@ -44,10 +45,10 @@ export class Controller {
             this.resetData();
         });
     }
-activateRectButton(){
-    $('#rect-btn').click(()=>{
-        let context = this.drawer.context
-        this.drawer.buildAxios(context);
-    });
-}
+    activateRectButton() {
+        $('#rect-btn').click(() => {
+            let context = this.drawer.context;
+            this.drawer.buildRectangles(context, this.results,this.names);
+        });
+    }
 }

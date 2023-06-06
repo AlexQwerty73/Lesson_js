@@ -8,10 +8,10 @@ export class Drawer {
     canvasWidth = 700;
     canvasHeight = 450;
     constructor() {
-        this.initContext();
+        this._initContext();
         this.initCanvas();
     }
-    initContext() {
+    _initContext() {
         const canvas = document.getElementById('canvas');
         this.context = canvas.getContext('2d');
     }
@@ -20,9 +20,9 @@ export class Drawer {
         this.context.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
         this.context.drawImage(logo, 100, 25, 500, 400);
     }
-    buildAxios(g) {
+    _buildAxios(g) {
         g.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
-        g.fillStyle = this.colors[4];
+        g.fillStyle = 'lightgray';
         g.lineWidth = 2;
 
         g.beginPath();
@@ -30,9 +30,27 @@ export class Drawer {
         g.lineTo(10, this.canvasHeight - 10);
         g.lineTo(this.canvasWidth - 10, this.canvasHeight - 10);
         g.stroke();
+    }
+    buildRectangles(g, results,names) {
+        let N = results.length;
+        if (N === 0) {
+            alert('Ви не завантажили дані')
+        } else {
+            this._buildAxios(g);
 
-        g.fillStyle = this.colors[1];
-        g.fillRect(50, this.canvasHeight - 10 - 300, 100, 300);
+            let w = (this.canvasWidth - 20) / N - 5;
+            let k = Math.max.apply(null, results) / (this.canvasHeight - 20);
+            g.font = '10pt Arial';
 
+            for (let i = 0; i < N; i++) {
+                let h = results[i] / k - 5;
+                let x = i * (w + 5) + 10;
+                let y = this.canvasHeight - 10 - h;
+
+                g.fillStyle = this.colors[i];
+                g.fillRect(x, y, w, h);
+                g.fillText(names[i],x+2,y-5);
+            }
+        }
     }
 }
