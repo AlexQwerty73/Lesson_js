@@ -53,6 +53,7 @@ export class Drawer {
                 let x = i * (w + 5) + 10;
                 let y = this.canvasHeight - 10 - h;
 
+                // щоб кольори не повторювалися
                 do {
                     color = this.colors[this._random(this.colors.length, 0)];
                 } while (colorArr.includes(color));
