@@ -2,14 +2,17 @@ export class Drawer {
     canvas = null;
     context = null;
     colors = [
-        'red', 'green', 'blue', 'orange', 'lightgray', 'purple',
-        'bisque', 'lavender', 'navy', 'silver', 'darkcyan'
+        'red', 'green', 'blue', 'orange', 'purple',
+        'lavender', 'navy', 'silver', 'darkcyan'
     ];
     canvasWidth = 700;
     canvasHeight = 450;
     constructor() {
         this._initContext();
         this.initCanvas();
+    }
+    _random(max, min) {
+        return Math.floor(Math.random() * (max - min) + min)
     }
     _initContext() {
         const canvas = document.getElementById('canvas');
@@ -31,7 +34,7 @@ export class Drawer {
         g.lineTo(this.canvasWidth - 10, this.canvasHeight - 10);
         g.stroke();
     }
-    buildRectangles(g, results,names) {
+    buildRectangles(g, results, names) {
         let N = results.length;
         if (N === 0) {
             alert('Ви не завантажили дані')
@@ -42,14 +45,22 @@ export class Drawer {
             let k = Math.max.apply(null, results) / (this.canvasHeight - 20);
             g.font = '10pt Arial';
 
+            let colorArr = [];
+            let color = '';
+            
             for (let i = 0; i < N; i++) {
                 let h = results[i] / k - 5;
                 let x = i * (w + 5) + 10;
                 let y = this.canvasHeight - 10 - h;
 
-                g.fillStyle = this.colors[i];
+                do {
+                    color = this.colors[this._random(this.colors.length, 0)];
+                } while (colorArr.includes(color));
+                colorArr.push(color);
+                g.fillStyle = color;
+
                 g.fillRect(x, y, w, h);
-                g.fillText(names[i],x+2,y-5);
+                g.fillText(names[i], x + 2, y - 5);
             }
         }
     }
