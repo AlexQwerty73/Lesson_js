@@ -2,8 +2,8 @@ export class Drawer {
     canvas = null;
     context = null;
     colors = [
-        'red', 'green', 'blue', 'orange', 'purple',
-        'lavender', 'navy', 'silver', 'darkcyan'
+        'coral', 'lightgreen', 'lightblue', 'orange', 'purple',
+        'lavender', 'navy', 'indigo', 'darkcyan'
     ];
     canvasWidth = 700;
     canvasHeight = 450;
@@ -47,7 +47,7 @@ export class Drawer {
 
             let colorArr = [];
             let color = '';
-            
+
             for (let i = 0; i < N; i++) {
                 let h = results[i] / k - 5;
                 let x = i * (w + 5) + 10;
@@ -62,6 +62,53 @@ export class Drawer {
 
                 g.fillRect(x, y, w, h);
                 g.fillText(names[i], x + 2, y - 5);
+            }
+        }
+    }
+
+    buildPies(g, results, name) {
+        let N = results.length;
+        if (N === 0) {
+            alert('Ви не завантажили дані')
+        } else {
+            let centerX = this.canvasWidth / 2;
+            let centerY = this.canvasHeight / 2;
+            let radius = 100;
+
+            g.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
+            g.strokeStyle = this.colors[7];
+            g.lineWidth = 2;
+
+            let s = 0;
+            for (let x of results) {
+                s += x;
+            }
+            let k = s / (2 * Math.PI);
+
+            let lastAngle = 0;
+            for (let i = 0; i < N; i++) {
+                let a1 = 0;
+                let a2 = 0;
+                if (i == 0) {
+                    a1 = 0;
+                    a2 = results[i] / k;
+                } else {
+                    a1 = lastAngle;
+                    a2 = lastAngle + results[i] / k;
+                }
+                lastAngle = a2;
+                g.fillStyle = this.colors[i];
+
+                g.fillRect(10, (20 * i) + 10, 10, 10);
+                g.fillText(name[i], 25, (20 * i) + 20);
+
+                g.beginPath();
+                g.moveTo(centerX, centerY);
+                g.arc(centerX, centerY, radius, a1, a2);
+
+                g.lineTo(centerX, centerY)
+                g.stroke();
+                g.fill();
             }
         }
     }

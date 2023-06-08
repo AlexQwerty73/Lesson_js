@@ -51,4 +51,11 @@ export class Controller {
             this.drawer.buildRectangles(context, this.results,this.names);
         });
     }
+
+    activateCircleButton(){
+        $('#circle-btn').click(()=>{
+            let context = this.drawer.context;
+            this.drawer.buildPies(context,this.results,this.names);
+        });
+    }
 }
