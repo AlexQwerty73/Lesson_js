@@ -18,9 +18,9 @@ export class Controller {
             width: 100,
             slide: function (event, ui) {
                 $('#red-label').text(ui.value);
-            }
+                this.mixColors();
+            }.bind(this)
         });
-        this.mixColors();
     }
     greenInit() {
         $('#green-slider').slider({
@@ -32,9 +32,9 @@ export class Controller {
             width: 100,
             slide: function (event, ui) {
                 $('#green-label').text(ui.value);
-            }
+                this.mixColors();
+            }.bind(this)
         });
-        this.mixColors();
     }
     blueInit() {
         $('#blue-slider').slider({
@@ -46,8 +46,8 @@ export class Controller {
             width: 100,
             slide: function (event, ui) {
                 $('#blue-label').text(ui.value);
-            }
+                this.mixColors();
+            }.bind(this)
         });
-        this.mixColors();
     }
 }
