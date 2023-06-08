@@ -5,7 +5,11 @@ export class Controller {
     }
 
     mixColors() {
-
+        let r =parseInt($('#red-label').text(), 10);
+        let g =parseInt($('#green-label').text(), 10);
+        let b =parseInt($('#blue-label').text(), 10);
+        let color = `rgb(${r},${g},${b})`;
+        $('#view-box').css('background-color', color);
     }
 
     redInit() {
