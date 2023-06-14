@@ -1,10 +1,11 @@
 import { Controller } from "./controller.js";
 
-$(document).ready(()=>{
+$(document).ready(() => {
 
-let controller = new Controller();
+    let controller = new Controller();
 
-controller.activateGetWeather();
-controller.activateResWeather();
-
+    controller.activateGetWeather();
+    controller.activateResWeather();
+    controller.activateTodayWeatherButton();
+    controller.activateTomorrowWeatherButton();
 });

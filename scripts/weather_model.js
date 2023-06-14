@@ -1,16 +1,16 @@
 export class WeatherModel {
 
-    constructor(data) {
+    constructor(data, dTime, day) {
         this._name = data.location.name;
         this._region = data.location.region;
         this._country = data.location.country;
-        this._localTime = data.location.localtime;
-        this._temp_c = data.current.temp_c;
-        this._text = data.current.condition.text;
-        this._icon = `https:${data.current.condition.icon}`;
-        this._wind_dir = data.current.wind_dir;
-        this._wind_kph = data.current.wind_kph;
-        this._vis_km = data.current.vis_km;
+        this._localTime = data.forecast.forecastday[day].hour[dTime].time;
+        this._temp_c = data.forecast.forecastday[day].hour[dTime].temp_c;
+        this._text = data.forecast.forecastday[day].hour[dTime].condition.text;
+        this._icon = `https:${data.forecast.forecastday[day].hour[dTime].condition.icon}`;
+        this._wind_dir = data.forecast.forecastday[day].hour[dTime].wind_dir;
+        this._wind_kph = data.forecast.forecastday[day].hour[dTime].wind_kph;
+        this._vis_km = data.forecast.forecastday[day].hour[dTime].vis_km;
     }
 
     get name() { return this._name }
