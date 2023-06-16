@@ -35,4 +35,29 @@ export class CookiesManager {
         return display_html;
     }
 
+    static findCookies(key) {
+        let _key = encodeURIComponent(key);
+
+        let parts = document.cookie.split(';');
+        let display_html = ``;
+
+        for (let item of parts) {
+            let params = item.trim().split('=');
+            let _keyParam = decodeURIComponent(params[0]);
+            let _valParam = decodeURIComponent(params[1]);
+
+            if (_key === _keyParam) {
+                display_html += `
+                    <tr>
+                        <td>${_keyParam}</td>
+                        <td>${_valParam}</td>
+                    </tr>
+                `;
+            }
+        }
+
+        alert(`Запис за Ключем ${_key} - ${display_html === `` ? 'не знайден' : 'успішно знайден'}!`);
+
+        return display_html;
+    }
 }

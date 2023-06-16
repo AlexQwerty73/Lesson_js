@@ -23,7 +23,12 @@ export class Controller {
     }
     activateSearchButton() {
         $('#b3').click(() => {
+            let key = $('#key').val();
+            let val = $('#val').val();
 
+            if (Validator.validateFields(key)) {
+                $('tbody').html(CookiesManager.findCookies(key,val));
+            }
         });
     }
     activateChengeButton() {
