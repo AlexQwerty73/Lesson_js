@@ -29,8 +29,9 @@ addTodoBtn.onclick = function (e) {
 }
 
 $('.todo-list').on('click', '.action-btn_del', (e) => {
-    console.log(e.target.parentNode.parentNode);
-    // e.value = '';
+    const liElem = e.target.parentNode.parentNode;
+    console.log(liElem);
+    liElem.remove();
 });
 
 function renderTodoList(todoList) {
