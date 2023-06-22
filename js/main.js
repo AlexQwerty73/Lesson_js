@@ -27,9 +27,11 @@ addTodoBtn.onclick = function (e) {
 
     addTodoInput.value = '';
 }
-doc.querySelector('.todo-list').on('click','.todo-item', (e)=>{
-    console.log(e);
-} );
+
+$('.todo-list').on('click', '.action-btn_del', (e) => {
+    console.log(e.target.parentNode.parentNode);
+    // e.value = '';
+});
 
 function renderTodoList(todoList) {
     const todoItemEls = todoList.map((item, index) => `
