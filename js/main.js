@@ -11,7 +11,7 @@ getTodosData = (todosArr) => {
     return todosArr.map((item, index) => {
         return {
             id: index + 1,
-            body: todosArr[todosArr.indexOf(item)],
+            body: item,
             complited: false
         };
     });
