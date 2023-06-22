@@ -29,20 +29,18 @@ addTodoBtn.onclick = function (e) {
 }
 
 $('.todo-list').on('click', '.action-btn_del', (e) => {
-    let liElem = e.target.parentNode.parentNode;
-    let liElemIndex = liElem.dataset.id - 1;
+    const liElem = e.target.parentNode.parentNode;
+    const liElemIndex = liElem.dataset.id - 1;
 
-    todos.splice(liElemIndex, liElemIndex)
+    todos.splice(liElemIndex, 1)
 
     for (let i = 0; i < todos.length; i++) {
         todos[i].id = i + 1;
-
     }
-    console.log(liElem.parentNode.children[2].children[0].innerHTML)
-    console.log(todos);
 
     renderTodoList(todos);
 });
+
 function renderTodoList(todoList) {
     const todoItemEls = todoList.map((item, index) => `
     <li class="todo-item" data-id="${item.id}">
