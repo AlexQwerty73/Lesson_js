@@ -62,3 +62,8 @@ margin-right: 10px;
     font-size: 20px;
     border: none;
 }
+
+
+input:checked + p{
+    text-decoration: line-through;
+}
