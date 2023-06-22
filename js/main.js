@@ -7,20 +7,14 @@ const todos = [
     '...'
 ];
 
-getTodosData=(todosArr)=>{
-    const todosArrObj = [];
-
-    for (let item of todosArr) {
-        todosArrObj.push(
-            {
-                id: todosArr.indexOf(item) + 1,
-                body: todosArr[todosArr.indexOf(item)],
-                complited: false
-            }
-        );
-    }
-
-    return todosArrObj;
+getTodosData = (todosArr) => {
+    return todosArr.map((item) => {
+        return {
+            id: todosArr.indexOf(item) + 1,
+            body: todosArr[todosArr.indexOf(item)],
+            complited: false
+        };
+    });
 }
 
 console.log(getTodosData(todos));
