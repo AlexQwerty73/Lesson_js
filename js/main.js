@@ -8,9 +8,9 @@ const todos = [
 ];
 
 getTodosData = (todosArr) => {
-    return todosArr.map((item) => {
+    return todosArr.map((item, index) => {
         return {
-            id: todosArr.indexOf(item) + 1,
+            id: index + 1,
             body: todosArr[todosArr.indexOf(item)],
             complited: false
         };
