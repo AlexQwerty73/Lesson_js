@@ -41,6 +41,17 @@ $('.todo-list').on('click', '.action-btn_del', (e) => {
     renderTodoList(todos);
 });
 
+$('.todo-list').on('change', 'input', (e) => {
+    const text = e.target.parentNode.parentNode.children[2];
+
+    if(text.classList.contains('line-through')){
+        text.classList.remove('line-through');
+    }else{
+        text.classList.add('line-through');
+    }
+});
+
+
 function renderTodoList(todoList) {
     const todoItemEls = todoList.map((item, index) => `
     <li class="todo-item" data-id="${item.id}">

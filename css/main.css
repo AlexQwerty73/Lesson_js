@@ -47,11 +47,9 @@ padding: 0;
 border:  none;
 margin-right: 10px;
 }
-/* .todo-item__input input{} */
 .todo-item__text{
     margin-right: auto;
 }
-/* .todo-item__btns{} */
 
 .action-btn{
     border: none;
@@ -64,6 +62,6 @@ margin-right: 10px;
 }
 
 
-input:checked + p{
-    text-decoration: line-through;
+.line-through{
+    text-decoration: line-through !important;
 }
