@@ -6,3 +6,8 @@ const
     addTodoInput = forms.addTodoInput,
     addTodoBtn = forms.addTodoBtn;
 
+forms.onsubmit = (e) => {
+    e.preventDefault();
+
+    // forms.submit()
+}
