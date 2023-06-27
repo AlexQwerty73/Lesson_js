@@ -6,8 +6,13 @@ const
     addTodoInput = forms.addTodoInput,
     addTodoBtn = forms.addTodoBtn;
 
-forms.onsubmit = (e) => {
-    e.preventDefault();
+// forms.onsubmit = (e) => {
+//     e.preventDefault();
+// }
 
-    // forms.submit()
-}
+//oninput / onchange / onfocus / onblur
+// addTodoInput.onblur = (e) => {
+//     const val = e.target.value;
+//     console.log(val);
+// }
+
