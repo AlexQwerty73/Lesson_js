@@ -28,29 +28,32 @@ addTodoBtn.onclick = function (e) {
     addTodoInput.value = '';
 }
 
-$('.todo-list').on('click', '.action-btn_del', (e) => {
-    const liElem = e.target.parentNode.parentNode;
-    const liElemIndex = liElem.dataset.id - 1;
+todoListEl.addEventListener('click', function (e) {
+    if (e.target.classList.contains('action-btn_del')) {
+        const todoItem = e.target.closest('.todo-item');
+        const todoItemId = parseInt(todoItem.dataset.id);
 
-    todos.splice(liElemIndex, 1)
+        todos.splice(todoItemId - 1, 1);
 
-    for (let i = 0; i < todos.length; i++) {
-        todos[i].id = i + 1;
-    }
+        todos.forEach(function (item, index) {
+            item.id = index + 1;
+        });
 
-    renderTodoList(todos);
-});
-
-$('.todo-list').on('change', 'input', (e) => {
-    const text = e.target.parentNode.parentNode.children[2];
-
-    if(text.classList.contains('line-through')){
-        text.classList.remove('line-through');
-    }else{
-        text.classList.add('line-through');
+        renderTodoList(todos);
     }
 });
 
+todoListEl.addEventListener('change', function (e) {
+    if (e.target.tagName === 'INPUT') {
+        const text = e.target.parentNode.parentNode.querySelector('.todo-item__text');
+
+        if (text.classList.contains('line-through')) {
+            text.classList.remove('line-through');
+        } else {
+            text.classList.add('line-through');
+        }
+    }
+});
 
 function renderTodoList(todoList) {
     const todoItemEls = todoList.map((item, index) => `
