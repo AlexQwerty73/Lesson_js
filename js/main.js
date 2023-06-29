@@ -49,10 +49,19 @@ todoListEl.addEventListener('change', function (e) {
 
         if (text.classList.contains('line-through')) {
             text.classList.remove('line-through');
+            todos[text.parentNode.dataset.id - 1].completed = false;
+
         } else {
             text.classList.add('line-through');
+            todos[text.parentNode.dataset.id - 1].completed = true;
         }
     }
+});
+
+doc.querySelector('#checkBox1').addEventListener('change', function(){
+    const newArr = todos.sort((a) => a.completed? -1 : 1);
+
+    renderTodoList(newArr)
 });
 
 function renderTodoList(todoList) {
