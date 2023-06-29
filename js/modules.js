@@ -44,9 +44,9 @@ const selectChangeCategory = (arr) => {
         return category == 'none' ? renderHTMLShop(arr) : renderHTMLShop(sortCategory(arr, category));
     } else {
         if (category == 'ToSmallPrice') {
-            return sortPriceToSmall(arr);
+            return renderHTMLShop(sortPriceToSmall(arr));
         } else if (category == 'ToBigPrice') {
-            return sortPriceToBig(arr);
+            return renderHTMLShop(sortPriceToBig(arr));
         }
     }
 }
