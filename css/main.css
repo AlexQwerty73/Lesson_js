@@ -1,0 +1,11 @@
+.shop-item{
+    border: 2px solid silver;
+    max-width: 200px;
+}
+.shop-item *{
+    border: 1px solid silver;
+}
+
+.shop-item img{
+    max-width: 180px;
+}
