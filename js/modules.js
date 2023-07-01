@@ -18,7 +18,6 @@ const renderHTMLSelect = (arr) => {
     return `<select name="category" id="category"><option value="none">none</option>${options.join('')}<option value="ToSmallPrice">ToSmallPrice</option><option value="ToBigPrice">ToBigPrice</option></select>`;
 };
 
-
 document.querySelector('.select-container').innerHTML = renderHTMLSelect(products);
 
 const renderHTMLShop = (arr) => {
