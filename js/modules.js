@@ -1,3 +1,5 @@
+const doc = document;
+
 const products = [
     { id: 1, title: 'product1', category: 'notebooks', img: 'img.jpg', price: 500 },
     { id: 2, title: 'product2', category: 'phone', img: 'phone.jpg', price: 1000 },
@@ -19,7 +21,7 @@ const renderHTMLSelect = (arr) => {
     return `<select name="category" id="category"><option value="none">none</option>${options.join('')}<option value="ToSmallPrice">ToSmallPrice</option><option value="ToBigPrice">ToBigPrice</option></select>`;
 };
 
-document.querySelector('.select-container').innerHTML = renderHTMLSelect(products);
+doc.querySelector('.select-container').innerHTML = renderHTMLSelect(products);
 
 const renderHTMLShop = (arr) => {
     let html = ``;
@@ -37,10 +39,10 @@ const renderHTMLShop = (arr) => {
     return html;
 }
 
-document.querySelector('.shop-container').innerHTML = renderHTMLShop(products);
+doc.querySelector('.shop-container').innerHTML = renderHTMLShop(products);
 
 const selectChangeCategory = (arr) => {
-    const category = document.querySelector('#category').value;
+    const category = doc.querySelector('#category').value;
     if (category != 'ToSmallPrice' && category != 'ToBigPrice') {
         return category == 'none' ? renderHTMLShop(arr) : renderHTMLShop(sortCategory(arr, category));
     } else {
@@ -52,8 +54,55 @@ const selectChangeCategory = (arr) => {
     }
 }
 
-document.querySelector()
+doc.querySelector('.shop-container').addEventListener('click', function (e) {
+    if (e.target.tagName === 'BUTTON') {
+        basket.push(e.target.parentNode.innerHTML);
+        doc.querySelector('.basket-container').innerHTML = ``;
+    }
+});
+
+const renderBasketHTML = (arr) => {
+    let html = `BASKET:<hr>`;
+    let index = 1;
+    for (let item of arr) {
+        html += `
+        <div class="shop-item" id="${index++}">
+        ${item}
+        </div>
+        `;
+    }
+    return html + `<hr>`
+}
+
+doc.querySelector('.basket-btn').onclick = (e) => {
+    doc.querySelector('.basket-container').innerHTML = renderBasketHTML(basket);
+
+    for (let i in basket) {
+        let btn = e.target.parentNode.childNodes[3].childNodes[3 + i * 2].childNodes[9]
+        btn.innerText = 'Del';
+        if (btn.className == 'addCart') {
+            btn.classList.remove("addCart");
+            btn.classList.add('delCard')
+        }
+    }
+};
+
+doc.querySelector('.basket-container').onclick = (e) => {
+    if (e.target.tagName === 'BUTTON') {
+        basket.splice(e.target.parentNode.id - 1, 1);
+        doc.querySelector('.basket-container').innerHTML = renderBasketHTML(basket);
+
+        let newHTML = ``;
+        let index = 1;
+
+        for (let i of basket) {
+            newHTML +=`<div class="shop-item" id="${index++}">` +  i.replace('addCart', 'delCard').replace('Add', 'Del') + '</div>';
+        }
+        basket = newHTML;
+        doc.querySelector('.basket-container').innerHTML = basket;
+    }
+}
 
 category.addEventListener('change', () => {
-    document.querySelector('.shop-container').innerHTML = selectChangeCategory(products);
+    doc.querySelector('.shop-container').innerHTML = selectChangeCategory(products);
 });
