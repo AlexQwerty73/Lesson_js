@@ -6,6 +6,7 @@ const products = [
     { id: 5, title: 'product5', category: 'phone', img: 'phone.jpg', price: 700 },
     { id: 6, title: 'product6', category: 'pc', img: 'pc.jpg', price: 2000 },
 ];
+let basket = [];
 
 sortPriceToBig = (arr) => arr.sort((a, b) => a.price - b.price);
 sortPriceToSmall = (arr) => arr.sort((a, b) => b.price - a.price);
@@ -29,6 +30,7 @@ const renderHTMLShop = (arr) => {
                 <p>Title: <span>${item.title}</span></p>
                 <p>Category: <span>${item.category}</span></p>
                 <p>price: <span>${item.price}</span></p>
+                <button class='addCart'>Add</button>
             </div>
         `
     }
@@ -49,6 +51,8 @@ const selectChangeCategory = (arr) => {
         }
     }
 }
+
+document.querySelector()
 
 category.addEventListener('change', () => {
     document.querySelector('.shop-container').innerHTML = selectChangeCategory(products);
