@@ -25,6 +25,45 @@ sortCategory = (arr, category) => arr.sort((a) => a.category == category ? -1 : 
 selectContainer.innerHTML = renderHTMLSelect(products);
 selectContainer.innerHTML = renderHTMLShop(products);
 
+shopContainer.addEventListener('click', function (e) {
+    if (e.target.tagName === 'BUTTON') {
+        basket.push(e.target.parentNode.innerHTML);
+        basketContainer.innerHTML = ``;
+    }
+});
+
+category.addEventListener('change', () => {
+    shopContainer.innerHTML = selectChangeCategory(products);
+});
+
+basketBtn.onclick = (e) => {
+    basketContainer.innerHTML = renderBasketHTML(basket);
+
+    for (let i in basket) {
+        let btn = e.target.parentNode.childNodes[3].childNodes[3 + i * 2].childNodes[9]
+        btn.innerText = 'Del';
+        if (btn.className == 'addCart') {
+            btn.classList.remove("addCart");
+            btn.classList.add('delCard')
+        }
+    }
+};
+
+basketContainer.onclick = (e) => {
+    if (e.target.tagName === 'BUTTON') {
+        basket.splice(e.target.parentNode.id - 1, 1);
+        basketContainer.innerHTML = renderBasketHTML(basket);
+
+        let newHTML = ``;
+        let index = 1;
+
+        for (let i of basket) {
+            newHTML += `<div class="shop-item" id="${index++}">` + i.replace('addCart', 'delCard').replace('Add', 'Del') + '</div>';
+        }
+        basket = newHTML;
+        basketContainer.innerHTML = basket;
+    }
+}
 const renderHTMLSelect = (arr) => {
     const categorySet = new Set(arr.map(item => item.category));
     const options = Array.from(categorySet, item => `<option value="${item}">${item}</option>`);
@@ -73,42 +112,3 @@ const renderBasketHTML = (arr) => {
     return html + `<hr>`
 }
 
-shopContainer.addEventListener('click', function (e) {
-    if (e.target.tagName === 'BUTTON') {
-        basket.push(e.target.parentNode.innerHTML);
-        basketContainer.innerHTML = ``;
-    }
-});
-
-category.addEventListener('change', () => {
-    shopContainer.innerHTML = selectChangeCategory(products);
-});
-
-basketBtn.onclick = (e) => {
-    basketContainer.innerHTML = renderBasketHTML(basket);
-
-    for (let i in basket) {
-        let btn = e.target.parentNode.childNodes[3].childNodes[3 + i * 2].childNodes[9]
-        btn.innerText = 'Del';
-        if (btn.className == 'addCart') {
-            btn.classList.remove("addCart");
-            btn.classList.add('delCard')
-        }
-    }
-};
-
-basketContainer.onclick = (e) => {
-    if (e.target.tagName === 'BUTTON') {
-        basket.splice(e.target.parentNode.id - 1, 1);
-        basketContainer.innerHTML = renderBasketHTML(basket);
-
-        let newHTML = ``;
-        let index = 1;
-
-        for (let i of basket) {
-            newHTML += `<div class="shop-item" id="${index++}">` + i.replace('addCart', 'delCard').replace('Add', 'Del') + '</div>';
-        }
-        basket = newHTML;
-        basketContainer.innerHTML = basket;
-    }
-}
