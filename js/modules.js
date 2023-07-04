@@ -8,6 +8,12 @@ const products = [
     { id: 5, title: 'product5', category: 'phone', img: 'phone.jpg', price: 700 },
     { id: 6, title: 'product6', category: 'pc', img: 'pc.jpg', price: 2000 },
 ];
+
+const selectContainer = doc.querySelector('.select-container');
+const shopContainer = doc.querySelector('.shop-container');
+const basketContainer = doc.querySelector('.basket-container')
+const basketBtn = doc.querySelector('.basket-btn');
+
 let basket = [];
 
 sortPriceToBig = (arr) => arr.sort((a, b) => a.price - b.price);
@@ -15,13 +21,15 @@ sortPriceToSmall = (arr) => arr.sort((a, b) => b.price - a.price);
 
 sortCategory = (arr, category) => arr.sort((a) => a.category == category ? -1 : 1);
 
+
+selectContainer.innerHTML = renderHTMLSelect(products);
+selectContainer.innerHTML = renderHTMLShop(products);
+
 const renderHTMLSelect = (arr) => {
     const categorySet = new Set(arr.map(item => item.category));
     const options = Array.from(categorySet, item => `<option value="${item}">${item}</option>`);
     return `<select name="category" id="category"><option value="none">none</option>${options.join('')}<option value="ToSmallPrice">ToSmallPrice</option><option value="ToBigPrice">ToBigPrice</option></select>`;
 };
-
-doc.querySelector('.select-container').innerHTML = renderHTMLSelect(products);
 
 const renderHTMLShop = (arr) => {
     let html = ``;
@@ -39,8 +47,6 @@ const renderHTMLShop = (arr) => {
     return html;
 }
 
-doc.querySelector('.shop-container').innerHTML = renderHTMLShop(products);
-
 const selectChangeCategory = (arr) => {
     const category = doc.querySelector('#category').value;
     if (category != 'ToSmallPrice' && category != 'ToBigPrice') {
@@ -53,13 +59,6 @@ const selectChangeCategory = (arr) => {
         }
     }
 }
-
-doc.querySelector('.shop-container').addEventListener('click', function (e) {
-    if (e.target.tagName === 'BUTTON') {
-        basket.push(e.target.parentNode.innerHTML);
-        doc.querySelector('.basket-container').innerHTML = ``;
-    }
-});
 
 const renderBasketHTML = (arr) => {
     let html = `BASKET:<hr>`;
@@ -74,8 +73,19 @@ const renderBasketHTML = (arr) => {
     return html + `<hr>`
 }
 
-doc.querySelector('.basket-btn').onclick = (e) => {
-    doc.querySelector('.basket-container').innerHTML = renderBasketHTML(basket);
+shopContainer.addEventListener('click', function (e) {
+    if (e.target.tagName === 'BUTTON') {
+        basket.push(e.target.parentNode.innerHTML);
+        basketContainer.innerHTML = ``;
+    }
+});
+
+category.addEventListener('change', () => {
+    shopContainer.innerHTML = selectChangeCategory(products);
+});
+
+basketBtn.onclick = (e) => {
+    basketContainer.innerHTML = renderBasketHTML(basket);
 
     for (let i in basket) {
         let btn = e.target.parentNode.childNodes[3].childNodes[3 + i * 2].childNodes[9]
@@ -87,22 +97,18 @@ doc.querySelector('.basket-btn').onclick = (e) => {
     }
 };
 
-doc.querySelector('.basket-container').onclick = (e) => {
+basketContainer.onclick = (e) => {
     if (e.target.tagName === 'BUTTON') {
         basket.splice(e.target.parentNode.id - 1, 1);
-        doc.querySelector('.basket-container').innerHTML = renderBasketHTML(basket);
+        basketContainer.innerHTML = renderBasketHTML(basket);
 
         let newHTML = ``;
         let index = 1;
 
         for (let i of basket) {
-            newHTML +=`<div class="shop-item" id="${index++}">` +  i.replace('addCart', 'delCard').replace('Add', 'Del') + '</div>';
+            newHTML += `<div class="shop-item" id="${index++}">` + i.replace('addCart', 'delCard').replace('Add', 'Del') + '</div>';
         }
         basket = newHTML;
-        doc.querySelector('.basket-container').innerHTML = basket;
+        basketContainer.innerHTML = basket;
     }
 }
-
-category.addEventListener('change', () => {
-    doc.querySelector('.shop-container').innerHTML = selectChangeCategory(products);
-});
